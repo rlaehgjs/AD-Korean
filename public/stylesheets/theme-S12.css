@@ -101,7 +101,7 @@ body.t-s12 {
   --color-text: black;
   --color-text-inverted: white;
   max-width: calc(100% - 10rem);
-  font-family: "Segoe UI", Typewriter;
+  font-family: NotoSans, Typewriter;
   font-weight: normal;
   background-color: rgba(187, 216, 242, 75%);
   background-image: var(--s12-background-gradient);
