@@ -993,19 +993,19 @@ export function simulateTime(seconds, real, fast) {
         asyncEntry: doneSoFar => {
           GameIntervals.stop();
           ui.$viewModel.modal.progressBar = {
-            label: "Offline Progress Simulation",
-            info: () => `The game is being run at a lower accuracy in order to quickly calculate the resources you
-              gained while you were away. See the How To Play entry on "Offline Progress" for technical details. If
-              you are impatient and want to get back to the game sooner, you can click the "Speed up" button to
-              simulate the rest of the time with half as many ticks (down to a minimum of ${formatInt(500)} ticks
-              remaining). The "SKIP" button will instead use all the remaining offline time in ${formatInt(10)}
-              ticks.`,
-            progressName: "Ticks",
+            label: "비접속 보상 계산중",
+
+
+            
+            info: () => `접속하지 않았을 때 보상 계산을 더 빠르게 하기 위해 낮은 정확도로 가동중입니다. 게임 플레이 방법의 "비접속 보상"에서 기술적인 세부사항을 확인하세요.
+              게임을 좀 더 빨리 실행시키고 싶다면, "가속" 버튼을 눌러 남은 계산 횟수를 절반으로 줄일 수 있습니다.(${formatInt(500)}회 까지만 감소 가능) 
+              "건너뛰기" 버튼은 남은 모든 과정을 ${formatInt(10)}회의 계산으로만 끝냅니다.`,
+            progressName: "계산",
             current: doneSoFar,
             max: ticks,
             startTime: Date.now(),
             buttons: [{
-              text: "Speed up",
+              text: "가속",
               condition: (current, max) => max - current > 500,
               click: () => {
                 const newRemaining = Math.clampMin(Math.floor(progress.remaining / 2), 500);
@@ -1019,7 +1019,7 @@ export function simulateTime(seconds, real, fast) {
               }
             },
             {
-              text: "SKIP",
+              text: "건너뛰기",
               condition: (current, max) => max - current > 10,
               click: () => {
                 // We jump to 10 from the end (condition guarantees there are at least 10 left).
