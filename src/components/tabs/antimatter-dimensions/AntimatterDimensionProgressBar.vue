@@ -103,7 +103,7 @@ export default {
           setProgress(player.infinityPoints, nextID.ipRequirement, text);
         }
       } else {
-        setProgress(Currency.antimatter.value, Decimal.NUMBER_MAX_VALUE, "Percentage to Infinity");
+        setProgress(Currency.antimatter.value, Decimal.NUMBER_MAX_VALUE, "무한까지 진행도");
       }
     }
   }
