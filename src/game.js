@@ -801,7 +801,7 @@ function laitelaBeatText(disabledDim) {
         repeated for each remaining Dimension by reaching destabilization within ${formatInt(30)} seconds again.`;
     default: return `<br><br>Lai'tela's Reality will now disable production from all
         ${disabledDim}th Dimensions during future runs, but the reward will be
-        ${formatInt(100)} times stronger than before.`;
+        ${formatInt(100)} 배 더 강력해집니다.`;
   }
 }
 
@@ -999,7 +999,7 @@ export function simulateTime(seconds, real, fast) {
             
             info: () => `접속하지 않았을 때 보상 계산을 더 빠르게 하기 위해 낮은 정확도로 가동중입니다. 게임 플레이 방법의 "비접속 보상"에서 기술적인 세부사항을 확인하세요.
               게임을 좀 더 빨리 실행시키고 싶다면, "가속" 버튼을 눌러 남은 계산 횟수를 절반으로 줄일 수 있습니다.(${formatInt(500)}회 까지만 감소 가능) 
-              "건너뛰기" 버튼은 남은 모든 과정을 ${formatInt(10)}회의 계산으로만 끝냅니다.`,
+              "건너뛰기" 버튼은 남은 모든 과정을 ${formatInt(10)}회의 계산으로만으로 끝냅니다.`,
             progressName: "계산",
             current: doneSoFar,
             max: ticks,

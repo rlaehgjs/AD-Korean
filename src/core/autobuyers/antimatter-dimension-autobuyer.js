@@ -12,7 +12,7 @@ export class AntimatterDimensionAutobuyerState extends UpgradeableAutobuyerState
   }
 
   get fullName() {
-    return `${this.name} Antimatter Dimension`;
+    return `${this.name} 반물질 차원`;
   }
 
   get data() {

@@ -18,10 +18,10 @@ export const Celestials = {
 
 GameDatabase.celestials.descriptions = [
   {
-    name: "Teresa",
+    name: "테레사",
     effects() {
-      return `Glyph Time Theorem generation is disabled.
-      You gain less Infinity Points and Eternity Points (x^${format(0.55, 2, 2)}).`;
+      return `문양의 시간 연구 자동생성 능력이 비활성화 됩니다.
+      무한 포인트와 영원 포인트 획득량이 ^${format(0.55, 2, 2)}으로 감소합니다.`;
     },
   },
   {
