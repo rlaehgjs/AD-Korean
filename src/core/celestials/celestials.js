@@ -25,38 +25,36 @@ GameDatabase.celestials.descriptions = [
     },
   },
   {
-    name: "Effarig",
+    name: "에파리그",
     effects() {
-      return `All Dimension multipliers, game speed, and tickspeed are severely lowered, like Dilation.
-      Infinity Power reduces the production and game speed penalties and Time Shards reduce the tickspeed penalty.
-      Glyph levels are temporarily capped to ${formatInt(Effarig.glyphLevelCap)}, rarity is unaffected.`;
+      return `모든 차원들의 배율과 게임 속도, 틱스피드가 "시간 지연"처럼 크게 감소합니다.
+      무한력은 차원들의 배율과 게임 속도 감소량을, 시간 조각은 틱스피드 감소량을 줄입니다.
+      문양 레벨이 ${formatInt(Effarig.glyphLevelCap)}로 제한되지만, 희귀도는 영향받지 않습니다.`;
     },
     description() {
-      return `You will exit Effarig's Reality when you complete a Layer of it for the first time.`;
+      return `목표 단계를 처음으로 완료하면, 에파리그의 현실에서 빠져나오게 됩니다.`;
     }
   },
   {
-    name: "The Nameless Ones",
+    name: "이름 없는 자들",
     effects() {
-      return `Glyph levels are boosted to a minimum of ${formatInt(5000)}.
-      Infinity, Time, and 8th Antimatter Dimension purchases are limited to ${formatInt(1)} each.
-      Antimatter Dimension multipliers are always Dilated (the Glyph effect still only applies in actual Dilation).
-      Time Study 192 (uncapped Replicanti) is locked.
-      The Black Hole is disabled.
-      Tachyon Particle production and Dilated Time production are severely reduced.
-      Time Theorem generation from Dilation Glyphs is disabled.
-      Certain challenge goals are increased.
-      Stored game time is discharged at a reduced effectiveness (exponent^${format(0.55, 2, 2)}).`;
+      return `문양의 레벨이 최소 ${formatInt(5000)}으로 증가합니다.
+      모든 무한, 시간 차원과, 반물질 8 차원의 개수가 ${formatInt(1)}개로 제한됩니다.
+      반물질 차원의 배율이 항상 지연되며(문양의 효과는 실제 시간 지연에서만 적용)
+      시간 연구 192번 (복제자 제한 해제)를 사용할 수 없습니다.
+      블랙홀을 사용 할 수 없습니다.
+      타키온 입자 생산과 지연된 시간 생산이 크게 감소합니다.
+      지연 문양으로 인한 시간 연구 생산이 비활성화 됩니다.
+      몇몇 도전의 목표가 증가합니다.
+      저장된 시간을 해방할 때, 효율이 ^${format(0.55, 2, 2)}로 감소합니다.`;
     }
   },
   {
     name: "V",
     effects() {
-      const vEffect = `All Dimension multipliers, Eternity Point gain, Infinity Point gain, and Dilated Time gain\
-      per second are square-rooted. 
-      The Replicanti interval is squared.`;
-      const vEffectAdditional = `
-      The Exponential Glyph Alchemy effect is disabled.`;
+      const vEffect = `모든 차원의 배율과, 무한 포인트, 영원 포인트, 지연된 시간들의 초당 획득량에 0.5제곱이 적용됩니다.
+      복제자 생산 간격에 2제곱이 적용됩니다.`;
+      const vEffectAdditional = `문양 연구의 기하급수 효과가 비활성화 됩니다.`;
 
       return Ra.unlocks.unlockGlyphAlchemy.canBeApplied
         ? vEffect + vEffectAdditional
@@ -64,14 +62,14 @@ GameDatabase.celestials.descriptions = [
     }
   },
   {
-    name: "Ra",
+    name: "라",
     effects() {
-      return `You only have ${formatInt(4)} Dimension Boosts and can not gain any more.
-      The Tickspeed purchase multiplier is fixed at ${formatX(1.1245, 0, 3)}.`;
+      return `최대 ${formatInt(4)} 번의 차원 가속만 할 수 있습니다.
+      틱스피드 가속의 개당 배율이 ${formatX(1.1245, 0, 3)}로 고정됩니다.`;
     },
   },
   {
-    name: "Lai'tela",
+    name: "라이텔라",
     effects() {
       let disabledDims;
       const highestActive = 8 - Laitela.difficultyTier;
