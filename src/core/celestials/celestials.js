@@ -21,7 +21,7 @@ GameDatabase.celestials.descriptions = [
     name: "테레사",
     effects() {
       return `문양의 시간 연구 자동생성 능력이 비활성화 됩니다.
-      무한 포인트와 영원 포인트 획득량이 ^${format(0.55, 2, 2)}으로 감소합니다.`;
+      무한 포인트와 영원 포인트 획득량이 ${format(0.55, 2, 2)}제곱으로 감소합니다.`;
     },
   },
   {
@@ -46,14 +46,14 @@ GameDatabase.celestials.descriptions = [
       타키온 입자 생산과 지연된 시간 생산이 크게 감소합니다.
       지연 문양으로 인한 시간 연구 생산이 비활성화 됩니다.
       몇몇 도전의 목표가 증가합니다.
-      저장된 시간을 해방할 때, 효율이 ^${format(0.55, 2, 2)}로 감소합니다.`;
+      저장된 시간을 해방할 때, 효율이 ${format(0.55, 2, 2)}제곱으로 감소합니다.`;
     }
   },
   {
     name: "V",
     effects() {
-      const vEffect = `모든 차원의 배율과, 무한 포인트, 영원 포인트, 지연된 시간들의 초당 획득량에 0.5제곱이 적용됩니다.
-      복제자 생산 간격에 2제곱이 적용됩니다.`;
+      const vEffect = `모든 차원의 배율과, 무한 포인트, 영원 포인트, 지연된 시간들의 초당 획득량에 ${format(0.5, 2, 2)}제곱이 적용됩니다.
+      복제자 생산 간격에 ${formatInt(2)}제곱이 적용됩니다.`;
       const vEffectAdditional = `문양 연구의 기하급수 효과가 비활성화 됩니다.`;
 
       return Ra.unlocks.unlockGlyphAlchemy.canBeApplied
@@ -65,7 +65,7 @@ GameDatabase.celestials.descriptions = [
     name: "라",
     effects() {
       return `최대 ${formatInt(4)} 번의 차원 가속만 할 수 있습니다.
-      틱스피드 가속의 개당 배율이 ${formatX(1.1245, 0, 3)}로 고정됩니다.`;
+      틱스피드 가속의 개당 배율이 ${formatX(1.1245, 0, 4)}로 고정됩니다.`;
     },
   },
   {
@@ -75,37 +75,31 @@ GameDatabase.celestials.descriptions = [
       const highestActive = 8 - Laitela.difficultyTier;
       switch (highestActive) {
         case 0:
-          disabledDims = "all Dimensions";
-          break;
-        case 1:
-          disabledDims = "2nd and higher Dimensions";
-          break;
-        case 2:
-          disabledDims = "3rd and higher Dimensions";
+          disabledDims = "모든 차원들";
           break;
         case 7:
-          disabledDims = "8th Dimensions";
+          disabledDims = "8차원들";
           break;
         default:
-          disabledDims = `${highestActive + 1}th and higher Dimensions`;
+          disabledDims = `${highestActive + 1}번째 이상의 차원들`;
           break;
       }
       const disabledText = highestActive === 8
         ? ""
-        : `Production from ${disabledDims} is disabled.`;
+        : `${disabledDims}의 생산이 비활성화됩니다.`;
 
-      return `Infinity Point and Eternity Point gain are Dilated.
-      Game speed is reduced to ${formatInt(1)} and gradually comes back over ${formatInt(10)} minutes.
-      Black Hole storing, discharging, pulsing, and inversion are all disabled.
+      return `무한 포인트와 영원 포인트의 획득이 지연됩니다.
+      게임 속도가 ${formatInt(1)}로 감소하며 ${formatInt(10)}분에 걸쳐 돌아옵니다.
+      블랙홀 저장, 해방, 펄스, 역전들이 모두 비활성화 됩니다.
       ${disabledText}`;
     },
     description() {
-      return `Antimatter generates entropy inside of this Reality.\
-      At ${formatPercents(1)} entropy, the Reality becomes destabilized\
-      and you gain a reward based on how quickly you reached ${formatPercents(1)}.
-      Destabilizing the Reality in less than ${formatInt(30)} seconds makes it become significantly more difficult,\
-      in exchange for giving a much stronger reward.\
-      Doing this ${formatInt(8)} times will also give a ${formatX(8)} to Dark Energy gain.`;
+      return `반물질이 현실에서 엔트로피를 생산합니다.\
+      ${formatPercents(1)} 엔트로피에서, 현실이 불안정화 되며\
+      도달한 시간에 따라 보상을 획득하게 됩니다. ${formatPercents(1)}.
+      ${formatInt(30)}초 내에 현실을 불안정화 시키면 현실이 더 어려워 지는 대신\
+      더 강력한 보상을 획득할 수 있습니다.\
+      ${formatInt(8)}번 불안정화 시키면, 추가로 어둠의 에너지 획득량이 ${formatX(8)}배로 증가합니다.`;
     }
   },
 
