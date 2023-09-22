@@ -799,8 +799,8 @@ function laitelaBeatText(disabledDim) {
     case 8: return `<br><br>Lai'tela's Reality will now disable production from all 8th Dimensions during
         future runs, but the reward will be ${formatInt(100)} times stronger than before. This boost can be
         repeated for each remaining Dimension by reaching destabilization within ${formatInt(30)} seconds again.`;
-    default: return `<br><br>Lai'tela's Reality will now disable production from all
-        ${disabledDim}th Dimensions during future runs, but the reward will be
+    default: return `<br><br>라이텔라의 Reality will now disable production from all
+        ${disabledDim}th Dimensions during future runs, 대신 보상이
         ${formatInt(100)} 배 더 강력해집니다.`;
   }
 }

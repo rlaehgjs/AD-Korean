@@ -3,140 +3,140 @@ import { DC } from "../../constants";
 export const normalAchievements = [
   {
     id: 11,
-    name: "You gotta start somewhere",
-    description: "Buy a 1st Antimatter Dimension.",
+    name: "태초마을에 온 것을 환영합니다.",
+    description: "반물질 1 차원을 구매합니다.",
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
     id: 12,
-    name: "100 antimatter is a lot",
-    description: "Buy a 2nd Antimatter Dimension.",
+    name: "100개면 많지",
+    description: "반물질 2 차원을 구매합니다.",
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
     id: 13,
-    name: "Half life 3 CONFIRMED",
-    description: "Buy a 3rd Antimatter Dimension.",
+    name: "하프라이프 3 출시",
+    description: "반물질 3 차원을 구매합니다.",
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
     id: 14,
-    name: "L4D: Left 4 Dimensions",
-    description: "Buy a 4th Antimatter Dimension.",
+    name: "레포디: 레프트 포 디멘션",
+    description: "반물질 4 차원을 구매합니다.",
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
     id: 15,
-    name: "5 Dimension Antimatter Punch",
-    description: "Buy a 5th Antimatter Dimension.",
+    name: "5차원 반물질 펀치",
+    description: "반물질 5 차원을 구매합니다.",
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
     id: 16,
-    name: "We couldn't afford 9",
+    name: "잘 알아두세요. 9는 없어요!",
     get description() {
       return Enslaved.isRunning
-        ? "Buy a 6th Antimatter Dimension (they never amount to anything)"
-        : "Buy a 6th Antimatter Dimension.";
+        ? "반물질 6 차원을 구매합니다. (크게 의미 없습니다?)"
+        : "반물질 6 차원을 구매합니다.";
     },
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
     id: 17,
-    name: "Not a luck related achievement",
-    description: "Buy a 7th Antimatter Dimension.",
+    name: "운은 실력이 아니야",
+    description: "반물질 7 차원을 구매합니다.",
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
     id: 18,
-    name: "90 degrees to infinity",
+    name: "90도 돌리면 무한",
     get description() {
       return Enslaved.isRunning
-        ? "Buy an 8th Antimatter Dimension (don't get used to it)"
-        : "Buy an 8th Antimatter Dimension.";
+        ? "반물질 8 차원을 구매합니다. (익숙해지지 마세요.)"
+        : "반물질 8 차원을 구매합니다.";
     },
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
   },
   {
     id: 21,
-    name: "To infinity!",
-    description: "Go Infinite.",
+    name: "무한으로!",
+    description: "무한을 실행합니다.",
     checkRequirement: () => true,
     checkEvent: GAME_EVENT.BIG_CRUNCH_BEFORE,
-    get reward() { return `Start with ${formatInt(100)} antimatter.`; },
+    get reward() { return `초기화 후에도 ${formatInt(100)} 반물질을 보유합니다.`; },
     effect: 100
   },
   {
     id: 22,
-    name: "FAKE NEWS!",
-    get description() { return `Encounter ${formatInt(50)} different news messages.`; },
+    name: "가짜 뉴스!",
+    get description() { return `${formatInt(50)}개의 서로 다른 뉴스를 봅니다.`; },
     checkRequirement: () => NewsHandler.uniqueTickersSeen >= 50,
     checkEvent: GAME_EVENT.REALITY_RESET_AFTER
   },
   {
     id: 23,
-    name: "The 9th Dimension is a lie",
-    get description() { return `Have exactly ${formatInt(99)} 8th Antimatter Dimensions.`; },
+    name: "9차원은 뻥이야",
+    get description() { return `정확히 ${formatInt(99)}개의 반물질 8차원을 보유합니다.`; },
     checkRequirement: () => AntimatterDimension(8).amount.eq(99),
-    get reward() { return `8th Antimatter Dimensions are ${formatPercents(0.1)} stronger.`; },
+    get reward() { return `반물질 8차원이 ${formatPercents(0.1)} 더 강해집니다.`; },
     effect: 1.1
   },
   {
     id: 24,
-    name: "Antimatter Apocalypse",
-    get description() { return `Get over ${format(DC.E80)} antimatter.`; },
+    name: "반물질 아포칼립스",
+    get description() { return `반물질을 ${format(DC.E80)}개 이상 보유합니다.`; },
     checkRequirement: () => Currency.antimatter.exponent >= 80,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER
   },
   {
     id: 25,
-    name: "Boosting to the max",
-    get description() { return `Buy ${formatInt(10)} Dimension Boosts.`; },
+    name: "한계까지 가속하기",
+    get description() { return `${formatInt(10)}번 이상 차원 가속을 합니다.`; },
     checkRequirement: () => DimBoost.purchasedBoosts >= 10,
     checkEvent: GAME_EVENT.DIMBOOST_AFTER
   },
   {
     id: 26,
-    name: "You got past The Big Wall",
-    description: "Buy an Antimatter Galaxy.",
+    name: "벽을 넘어서",
+    description: "반물질 은하를 구매합니다.",
     checkRequirement: () => true,
     checkEvent: GAME_EVENT.GALAXY_RESET_BEFORE
   },
   {
     id: 27,
-    name: "Double Galaxy",
-    get description() { return `Buy ${formatInt(2)} Antimatter Galaxies.`; },
+    name: "쌍둥이 성좌",
+    get description() { return `반물질 은하 ${formatInt(2)}개를 보유합니다.`; },
     checkRequirement: () => player.galaxies >= 2,
     checkEvent: GAME_EVENT.GALAXY_RESET_AFTER
   },
   {
     id: 28,
-    name: "There's no point in doing that...",
+    name: "그런 짓 왜 함?",
     get description() {
-      return `Buy a single 1st Antimatter Dimension when you have over ${format(DC.E150)} of them.`;
+      return `반물질 1차원을 ${format(DC.E150)}개 이상 보유하고 있을 때 1개만 구매합니다.`;
     },
     checkRequirement: () => AntimatterDimension(1).amount.exponent >= 150,
     checkEvent: GAME_EVENT.ACHIEVEMENT_EVENT_OTHER,
-    get reward() { return `1st Antimatter Dimensions are ${formatPercents(0.1)} stronger.`; },
+    get reward() { return `반물질 1차원이 ${formatPercents(0.1)} 더 강해집니다.`; },
     effect: 1.1
   },
   {
     id: 31,
-    name: "I forgot to nerf that",
-    get description() { return `Get any Antimatter Dimension multiplier over ${formatX(DC.E31)}.`; },
+    name: "하향하는 걸 깜박했네",
+    get description() { return `아무 반물질 차원의 배율을 ${formatX(DC.E31)}이상으로 높입니다.`; },
     checkRequirement: () => AntimatterDimensions.all.some(x => x.multiplier.exponent >= 31),
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    get reward() { return `1st Antimatter Dimensions are ${formatPercents(0.05)} stronger.`; },
+    get reward() { return `반물질 1차원이 ${formatPercents(0.05)} 더 강해집니다.`; },
     effect: 1.05
   },
   {
     id: 32,
-    name: "The Gods are pleased",
-    get description() { return `Get over ${formatX(600)} from Dimensional Sacrifice outside of Challenge 8.`; },
+    name: "오 신이시여",
+    get description() { return `8번 도전을 제외한 상황에서 반물질 희생 배율 ${formatX(600)} 이상에 도달합니다.`; },
     checkRequirement: () => !NormalChallenge(8).isOnlyActiveChallenge && Sacrifice.totalBoost.gte(600),
     checkEvent: GAME_EVENT.SACRIFICE_RESET_AFTER,
     get reward() {
-      return `Dimensional Sacrifice is stronger.
+      return `차원 희생이 더 강해집니다.
       ${Sacrifice.getSacrificeDescription({ "Achievement32": false, "Achievement57": false, "Achievement88": false })} ➜
       ${Sacrifice.getSacrificeDescription({ "Achievement32": true, "Achievement57": false, "Achievement88": false })}`;
     },
@@ -144,65 +144,64 @@ export const normalAchievements = [
   },
   {
     id: 33,
-    name: "That's a lot of infinites",
-    get description() { return `Reach Infinity ${formatInt(10)} times.`; },
+    name: "무한 엄청 많다",
+    get description() { return `무한에 ${formatInt(10)}번 도달합니다.`; },
     checkRequirement: () => Currency.infinities.gte(10),
     checkEvent: GAME_EVENT.BIG_CRUNCH_AFTER
   },
   {
     id: 34,
-    name: "You didn't need it anyway",
-    description: "Infinity without having any 8th Antimatter Dimensions.",
+    name: "그게 뭐죠? 먹는 건가요?",
+    description: "반물질 8차원 없이 무한에 도달합니다.",
     checkRequirement: () => AntimatterDimension(8).totalAmount.eq(0),
     checkEvent: GAME_EVENT.BIG_CRUNCH_BEFORE,
-    get reward() { return `Dimensions 1-7 are ${formatPercents(0.02)} stronger.`; },
+    get reward() { return `1~7차원이 ${formatPercents(0.02)} 더 강해집니다.`; },
     effect: 1.02
   },
   {
     id: 35,
-    name: "Don't you dare sleep",
+    name: "무서워서 잘 수가 없네",
     get description() {
       return PlayerProgress.realityUnlocked()
-        ? `Be offline for a period of over ${formatInt(6)} hours (real time).`
-        : `Be offline for a period of over ${formatInt(6)} hours.`;
+        ? `실제 시간 ${formatInt(6)}시간 동안 비접속을 유지합니다.`
+        : `${formatInt(6)}시간 동안 비접속을 유지합니다.`;
     },
     checkRequirement: () => Date.now() - player.lastUpdate >= 21600000,
     checkEvent: GAME_EVENT.GAME_TICK_BEFORE
   },
   {
     id: 36,
-    name: "Claustrophobic",
+    name: "폐소공포증",
     get description() {
-      return `Infinity with just ${formatInt(1)} Antimatter Galaxy. (Your Antimatter Galaxies are reset on Infinity.)`;
+      return `${formatInt(1)}개의 반물질 은하만으로 무한에 도달합니다.`;
     },
     checkRequirement: () => player.galaxies === 1,
     checkEvent: GAME_EVENT.BIG_CRUNCH_BEFORE,
-    get reward() { return `Multiply starting tick speed by ${format(1.02, 2, 2)}.`; },
+    get reward() { return `시작 틱스피드가 ${format(1.02, 2, 2)} 더 빨라집니다.`; },
     effect: 1 / 1.02
   },
   {
     id: 37,
-    name: "That's FAST!",
-    get description() { return `Infinity in under ${formatInt(2)} hours.`; },
+    name: "빠르다 빨라!",
+    get description() { return `${formatInt(2)}시간 내에 무한에 도달합니다.`; },
     checkRequirement: () => Time.thisInfinityRealTime.totalHours <= 2,
     checkEvent: GAME_EVENT.BIG_CRUNCH_BEFORE,
-    get reward() { return `Start with ${formatInt(5000)} antimatter.`; },
+    get reward() { return `초기화 후에도 반물질 ${formatInt(5000)}개를 보유합니다.`; },
     effect: 5000
   },
   {
     id: 38,
-    name: "I don't believe in Gods",
+    name: "나 무교야",
     get description() {
-      return `Buy an Antimatter Galaxy without Dimensional Sacrificing.
-        (Your Antimatter Galaxies are reset on Infinity.)`;
+      return `차원 희생 없이 반물질 은하를 구매합니다.`;
     },
     checkRequirement: () => player.requirementChecks.infinity.noSacrifice,
     checkEvent: GAME_EVENT.GALAXY_RESET_BEFORE
   },
   {
     id: 41,
-    name: "No DLC required",
-    get description() { return `Buy ${formatInt(16)} Infinity Upgrades.`; },
+    name: "무과금 게임",
+    get description() { return `무한 업그레이드 ${formatInt(16)}개를 구매합니다.`; },
     checkRequirement: () => player.infinityUpgrades.size >= 16,
     checkEvent: [
       GAME_EVENT.INFINITY_UPGRADE_BOUGHT,
@@ -210,14 +209,14 @@ export const normalAchievements = [
       GAME_EVENT.REALITY_UPGRADE_TEN_BOUGHT
     ],
     get reward() {
-      return `Unlock two new Infinity Upgrades- ${formatX(2)} IP multiplier and offline IP generation.`;
+      return `무한 업그레이드 ${formatX(2)} 무한 포인트와 비접속 무한 포인트 생산을 엽니다.`;
     },
   },
   {
     id: 42,
-    name: "Super Sanic",
+    name: "누구보다 빠르게 남들과는 다르게",
     get description() {
-      return `Have antimatter per second exceed your current antimatter above ${format(DC.E63)}.`;
+      return `초당 반물질 생산량이 보유량과 ${format(DC.E63)}개 보다 많거나 같은 상태를 만듭니다.`;
     },
     checkRequirement: () =>
       Currency.antimatter.exponent >= 63 &&
@@ -226,10 +225,9 @@ export const normalAchievements = [
   },
   {
     id: 43,
-    name: "How the antitables have turned..",
+    name: "반물질 밥상 뒤엎기",
     description:
-      "Get the 8th Antimatter Dimension multiplier to be highest, 7th Antimatter Dimension multiplier " +
-      " second highest, etc.",
+      "반물질 차원들의 배율을 차원 순서대로 오름차순이 되게 만듭니다(1차원이 제일 낮고, 2차원이 2번째... 8차원이 제일 높게).",
     checkRequirement: () => {
       const multipliers = Array.range(1, 8).map(tier => AntimatterDimension(tier).multiplier);
       for (let i = 0; i < multipliers.length - 1; i++) {
@@ -239,16 +237,14 @@ export const normalAchievements = [
     },
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
     get reward() {
-      return `Each Antimatter Dimension gains a boost proportional to tier
-      (8th gets ${formatPercents(0.08)}, 7th gets ${formatPercents(0.07)}, etc.)`;
+      return `각 반물질 차원이 차원수에 따라 강해집니다. (8차원은 ${formatPercents(0.08)}, 7차원은 ${formatPercents(0.07)}...)`;
     }
   },
   {
     id: 44,
-    name: "Over in 30 Seconds",
+    name: "30초 경과!",
     get description() {
-      return `Have antimatter per second exceed your current antimatter
-      for ${formatInt(30)} consecutive seconds.`;
+      return `${formatInt(30)}초 동안 초당 반물질 생산량이 보유량보다 많게 만듭니다.`;
     },
     checkRequirement: () => AchievementTimers.marathon1
       .check(Currency.antimatter.productionPerSecond.gt(Currency.antimatter.value), 30),
@@ -256,11 +252,11 @@ export const normalAchievements = [
   },
   {
     id: 45,
-    name: "Faster than a potato",
-    get description() { return `Get more than ${format(DC.E29)} ticks per second.`; },
+    name: "감자보다 빠르다!",
+    get description() { return `초당 틱을 ${format(DC.E29)}이상으로 만듭니다.`; },
     checkRequirement: () => Tickspeed.current.exponent <= -26,
     checkEvent: GAME_EVENT.GAME_TICK_AFTER,
-    get reward() { return `Multiply starting tickspeed by ${formatX(1.02, 0, 2)}.`; },
+    get reward() { return `시작 틱스피드가 ${formatX(1.02, 0, 2)} 감소합니다.`; },
     effect: 0.98
   },
   {

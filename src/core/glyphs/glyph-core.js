@@ -270,11 +270,11 @@ export const Glyphs = {
     if (glyph.type !== "companion") {
       if (RealityUpgrade(9).isLockingMechanics) {
         if (this.activeWithoutCompanion.length > 0) {
-          RealityUpgrade(9).tryShowWarningModal("equip another non-Companion Glyph");
+          RealityUpgrade(9).tryShowWarningModal("동행이 아닌 다른 문양을 장착중입니다?");
           return;
         }
         if (glyph.level < 3) {
-          RealityUpgrade(9).tryShowWarningModal(`equip a Glyph whose level is less than ${formatInt(3)}`);
+          RealityUpgrade(9).tryShowWarningModal(`${formatInt(3)}레벨 이하의 문양을 장착중입니다`);
           return;
         }
       }
@@ -298,7 +298,7 @@ export const Glyphs = {
     }
     if (this.active[targetSlot] === null) {
       if (sameSpecialTypeIndex >= 0) {
-        Modal.message.show(`You may only have one ${glyph.type.capitalize()} Glyph equipped!`,
+        Modal.message.show(`${glyph.type.capitalize()} 문양은 1개만 가질수 있습니다!`,
           { closeEvent: GAME_EVENT.GLYPHS_CHANGED });
         return;
       }
@@ -315,7 +315,7 @@ export const Glyphs = {
     } else {
       // We can only replace effarig/reality glyph
       if (sameSpecialTypeIndex >= 0 && sameSpecialTypeIndex !== targetSlot) {
-        Modal.message.show(`You may only have one ${glyph.type.capitalize()} Glyph equipped!`,
+        Modal.message.show(`${glyph.type.capitalize()} 문양은 1개만 가질수 있습니다!`,
           { closeEvent: GAME_EVENT.GLYPHS_CHANGED });
         return;
       }
@@ -349,12 +349,11 @@ export const Glyphs = {
     // has already been reset, so we just use the most recent real time record (this leads to some inconsistent behavior
     // when restarting, but that's not easily avoidable)
     const stillEquipped = player.reality.glyphs.active.length;
-    const fastReality = player.records.recentRealities[0][1] < 3000;
+    const fastReality = player.records.recentRealities[0][1] < 3000
     if (stillEquipped && !fastReality) {
       const target = player.options.respecIntoProtected ? "Protected slots" : "Main Inventory";
       const hasOther = this.findFreeIndex(!player.options.respecIntoProtected) !== -1;
-      setTimeout(() => Modal.message.show(`${quantifyInt("Glyph", stillEquipped)} could not be unequipped due to lack
-        of space. Free up some space in your ${target}${hasOther ? " or switch where you are unequipping to" : ""}
+      setTimeout(() => Modal.message.show(`${quantifyInt("Glyph", stillEquipped)} 문양은 보관함에 남는 공간이 없어 뺄 수 없습니다. 빈 공간을 ${target}${hasOther ? "에서 만들거나 바꾸려고 하는 문양과 직접 바꿔보세요." : ""}
         in order to unequip ${stillEquipped === 1 ? "it" : "them"}.`, { closeEvent: GAME_EVENT.GLYPHS_CHANGED }),
       50);
     }
@@ -781,16 +780,16 @@ export const Glyphs = {
   },
   giveCursedGlyph() {
     if (GameCache.glyphInventorySpace.value === 0) {
-      Modal.message.show("No available inventory space; Sacrifice some Glyphs to free up space.",
+      Modal.message.show("보관함에 남는 공간이 없습니다. 문양을 희생하여 공간을 확보하세요.",
         { closeEvent: GAME_EVENT.GLYPHS_CHANGED });
       return;
     }
     const cursedCount = this.allGlyphs.filter(g => g !== null && g.type === "cursed").length;
     if (cursedCount >= 5) {
-      GameUI.notify.error(`You don't need more than ${format(5)} Cursed Glyphs!`);
+      GameUI.notify.error(`${format(5)}개를 초과하여 저주 문양을 가질 이유가 없습니다!`);
     } else {
       this.addToInventory(GlyphGenerator.cursedGlyph());
-      GameUI.notify.error("Created a Cursed Glyph");
+      GameUI.notify.error("저주 문양을 만들었습니다");
     }
   }
 };
@@ -849,7 +848,7 @@ export function getAdjustedGlyphLevel(glyph, realityGlyphBoost = Glyphs.levelBoo
 
 export function respecGlyphs() {
   if (!Glyphs.unequipAll()) {
-    Modal.message.show("Some of your Glyphs could not be unequipped due to lack of inventory space.",
+    Modal.message.show("몇몇 문양들은 보관함에 남는 공간이 없어 뺄 수 없었습니다.",
       { closeEvent: GAME_EVENT.GLYPHS_CHANGED });
   }
   player.reality.respec = false;
