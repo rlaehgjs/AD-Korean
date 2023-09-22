@@ -16,8 +16,8 @@ class RaUnlockState extends BitUpgradeState {
   get requirementText() {
     const pet = this.pet.name;
     return this.level === 1
-      ? `Unlock ${pet}`
-      : `Get ${pet} to level ${this.level}`;
+      ? `${pet}`
+      : `${pet}의 레벨 ${this.level} 달성`;
   }
 
   get reward() {
@@ -226,8 +226,8 @@ const pets = mapGameDataToObject(
 );
 
 export const Ra = {
-  displayName: "Ra",
-  possessiveName: "Ra's",
+  displayName: "라",
+  possessiveName: "라의",
   unlocks,
   pets,
   remembrance: {

@@ -257,8 +257,8 @@ class InfinityDimensionState extends DimensionState {
     if (!this.isAvailableForPurchase) return false;
     if (ImaginaryUpgrade(15).isLockingMechanics) {
       const lockString = this.tier === 1
-        ? "purchase a 1st Infinity Dimension"
-        : "purchase a Dimension which will produce 1st IDs";
+        ? "첫 번째 무한 차원을 구매해보세요"
+        : "이 차원을 구매해 첫 번째 무한 차원들을 생산해 보세요";
       ImaginaryUpgrade(15).tryShowWarningModal(lockString);
       return false;
     }
@@ -280,8 +280,8 @@ class InfinityDimensionState extends DimensionState {
     if (!this.isAvailableForPurchase) return false;
     if (ImaginaryUpgrade(15).isLockingMechanics) {
       const lockString = this.tier === 1
-        ? "purchase a 1st Infinity Dimension"
-        : "purchase a Dimension which will produce 1st IDs";
+      ? "첫 번째 무한 차원을 구매해보세요"
+      : "이 차원을 구매해 첫 번째 무한 차원들을 생산해 보세요";
       if (!auto) ImaginaryUpgrade(15).tryShowWarningModal(lockString);
       return false;
     }
@@ -334,7 +334,7 @@ export const InfinityDimensions = {
 
   next() {
     if (InfinityDimension(8).isUnlocked)
-      throw "All Infinity Dimensions are unlocked";
+      throw "모든 무한 차원이 열림";
     return this.all.first(dim => !dim.isUnlocked);
   },
 

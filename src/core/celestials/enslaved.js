@@ -8,7 +8,7 @@ export const ENSLAVED_UNLOCKS = {
     id: 0,
     price: TimeSpan.fromYears(1e35).totalMilliseconds,
     secondaryRequirement: () => true,
-    description: () => `Increase the softcap to Tickspeed upgrades from Time Dimensions by ${formatInt(1e5)}`,
+    description: () => `시간 차원에서 획득하는 틱스피드의 효율 감소 시점을 ${formatInt(1e5)}만큼 늦춥니다`,
   },
   RUN: {
     id: 1,
@@ -21,15 +21,15 @@ export const ENSLAVED_UNLOCKS = {
     description() {
       const hasLevelRequirement = player.records.bestReality.glyphLevel >= 5000;
       const hasRarityRequirement = strengthToRarity(player.records.bestReality.glyphStrength) >= 100;
-      return `Unlock The Nameless Ones' Reality (requires ${hasLevelRequirement ? "[✓]" : "[✗]"} a level
-      ${formatInt(5000)} Glyph and ${hasRarityRequirement ? "[✓]" : "[✗]"} a ${formatRarity(100)} rarity Glyph)`;
+      return `이름 없는 자의 현실을 엽니다 (필요: ${hasLevelRequirement ? "[✓]" : "[✗]"} 
+      ${formatInt(5000)} 레벨의 문양, ${hasRarityRequirement ? "[✓]" : "[✗]"} a ${formatRarity(100)} 희귀도의 문양)`;
     }
   }
 };
 
 export const Enslaved = {
-  displayName: "The Nameless Ones",
-  possessiveName: "The Nameless Ones'",
+  displayName: "이름 없는 자",
+  possessiveName: "이름 없는 자",
   boostReality: false,
   BROKEN_CHALLENGES: [2, 3, 4, 5, 7, 8, 10, 11, 12],
   nextTickDiff: 50,
@@ -159,7 +159,7 @@ export const Enslaved = {
     AutomatorData.recalculateErrors();
     if (AutomatorBackend.state.mode === AUTOMATOR_MODE.RUN && AutomatorData.currentErrors().length) {
       AutomatorBackend.stop();
-      GameUI.notify.error("This Reality forbids Black Holes! (Automator stopped)");
+      GameUI.notify.error("이 현실에서는 블랙홀이 금지됩니다! (자동동작기도 멈춤)");
     }
 
     this.quotes.startRun.show();
@@ -193,14 +193,13 @@ export const Enslaved = {
   },
   feelEternity() {
     if (this.feltEternity) {
-      Modal.message.show(`You have already exposed this crack in the Reality. Time in this Eternity is being multiplied
-        by your Eternity count, up to a maximum of ${formatX(1e66)}.`,
+      Modal.message.show(`이미 이 현실에서 균열을 드러냈습니다. 영원 횟수에 따라 최대 ${formatX(1e66)}까지 영원에서 보낸 시간이 증가합니다.`,
       { closeEvent: GAME_EVENT.REALITY_RESET_AFTER }, 1);
     } else {
       EnslavedProgress.feelEternity.giveProgress();
       this.feltEternity = true;
-      Modal.message.show(`Time in this Eternity will be multiplied by your Eternity count,
-        up to a maximum of ${formatX(1e66)}.`, { closeEvent: GAME_EVENT.REALITY_RESET_AFTER }, 1);
+      Modal.message.show(`영원 횟수에 따라 최대 ${formatX(1e66)}까지
+      영원에서 보낸 시간이 증가합니다.`, { closeEvent: GAME_EVENT.REALITY_RESET_AFTER }, 1);
     }
   },
   get feltEternity() {
@@ -255,7 +254,7 @@ class EnslavedProgressState extends BitUpgradeState {
     // Bump the last hint time appropriately if the player found the hint
     if (this.hasHint && !this.hasProgress) {
       player.celestials.enslaved.zeroHintTime -= Math.log(2) / Math.log(3) * TimeSpan.fromDays(1).totalMilliseconds;
-      GameUI.notify.success("You found a crack in The Nameless Ones' Reality!", 10000);
+      GameUI.notify.success("이름없는 자의 현실에서 균열을 찾았습니다!", 10000);
     }
     player.celestials.enslaved.progressBits |= (1 << this.id);
   }

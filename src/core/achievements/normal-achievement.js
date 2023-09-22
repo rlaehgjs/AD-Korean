@@ -61,17 +61,17 @@ class AchievementState extends GameMechanicState {
       Autobuyer.bigCrunch.bumpAmount(4);
     }
     if (this.id === 55 && !PlayerProgress.realityUnlocked()) {
-      Modal.message.show(`Since you performed an Infinity in under a minute, the UI changed on the screen.
-        Instead of the Dimensions disappearing, they stay and the Big Crunch button appears on top of them.
-        This is purely visual, and is there to prevent flickering.`, {}, 3);
+      Modal.message.show(`무한을 1분 안에 완료하여, UI가 변경되었습니다.
+      차원이 UI에서 사라지는 대신, 무한 버튼만이 위에 생기게 됩니다.
+      순수히 깜빡거리는 현상을 방지하기 위한 시각적인 변경입니다.`, {}, 3);
     }
     if (this.id === 148 || this.id === 166) {
       GameCache.staticGlyphWeights.invalidate();
     }
     if (auto) {
-      GameUI.notify.reality(`Automatically unlocked: ${this.name}`);
+      GameUI.notify.reality(`자동으로 열림: ${this.name}`);
     } else {
-      GameUI.notify.success(`Achievement: ${this.name}`);
+      GameUI.notify.success(`업적 획득: ${this.name}`);
       SteamRuntime.activateAchievement(this.id);
     }
     if (player.speedrun.isActive && !player.speedrun.achievementTimes[this.id]) {

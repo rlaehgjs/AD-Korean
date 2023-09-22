@@ -171,19 +171,19 @@ export const AutoGlyphProcessor = {
   filterModeName(id) {
     switch (id) {
       case AUTO_GLYPH_SCORE.LOWEST_SACRIFICE:
-        return "Lowest Total Glyph Sacrifice";
+        return "문양 희생 점수가 최저인 문양";
       case AUTO_GLYPH_SCORE.EFFECT_COUNT:
-        return "Number of Effects";
+        return "효과의 수";
       case AUTO_GLYPH_SCORE.RARITY_THRESHOLD:
-        return "Rarity Threshold";
+        return "특정 희귀도 이상";
       case AUTO_GLYPH_SCORE.SPECIFIED_EFFECT:
-        return "Specified Effect";
+        return "특정 효과";
       case AUTO_GLYPH_SCORE.EFFECT_SCORE:
-        return "Effect Score";
+        return "효과 환산 점수";
       case AUTO_GLYPH_SCORE.LOWEST_ALCHEMY:
-        return "Lowest Alchemy Resource";
+        return "연금술 재료가 가장 적은 문양";
       case AUTO_GLYPH_SCORE.ALCHEMY_VALUE:
-        return "Refinement Value";
+        return "정제량이 가장 많은 문양";
       default:
         return "Invalid Glyph filter mode";
     }
@@ -191,11 +191,11 @@ export const AutoGlyphProcessor = {
   trashModeDesc(id) {
     switch (id) {
       case AUTO_GLYPH_REJECT.SACRIFICE:
-        return "Always sacrifice";
+        return "항상 희생";
       case AUTO_GLYPH_REJECT.REFINE:
-        return "Always refine";
+        return "항상 정제";
       case AUTO_GLYPH_REJECT.REFINE_TO_CAP:
-        return "Refine to cap, then sacrifice";
+        return "한계치까지 정제 후 항상 희생";
       default:
         return "Invalid Glyph trash mode";
     }
@@ -248,25 +248,25 @@ function getGlyphLevelSources() {
   const eterBase = Effects.max(1, RealityUpgrade(18));
   return {
     ep: {
-      name: "EP",
+      name: "영원 포인트",
       value: epBase,
       coeff: epCoeff,
       exp: 0.5,
     },
     repl: {
-      name: "Replicanti",
+      name: "복제자",
       value: replBase,
       coeff: replCoeff,
       exp: replPow,
     },
     dt: {
-      name: "DT",
+      name: "지연된 시간",
       value: dtBase,
       coeff: dtCoeff,
       exp: dtPow,
     },
     eternities: {
-      name: "Eternities",
+      name: "영원 수",
       value: eterBase,
       // These are copied from Reality Upgrade 18's gameDB entry
       coeff: 0.45,
